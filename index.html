@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>AttendPro — Dashboard</title>
+</head>
+<body>
+  <header class="company-header">
+    <div class="header-content">
+      <div class="logo">
+        <h1>AttendPro</h1>
+      </div>
+      <p class="tagline">Employee Attendance Management System</p>
+    </div>
+    <nav>
+      <a href="#form">Attendance Form</a>
+      <a href="#table">Attendance Report</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="stats-bar" id="stats-bar">
+      <div class="stat">
+        <span class="stat-value" id="stat-total">0</span>
+        <span class="stat-label">Employees</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="stat-avg">—</span>
+        <span class="stat-label">Avg Attendance</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat stat-badge">
+        <span class="badge badge-excellent" id="stat-excellent">0</span>
+        <span class="stat-label">Excellent</span>
+      </div>
+      <div class="stat stat-badge">
+        <span class="badge badge-good" id="stat-good">0</span>
+        <span class="stat-label">Good</span>
+      </div>
+      <div class="stat stat-badge">
+        <span class="badge badge-average" id="stat-average">0</span>
+        <span class="stat-label">Average</span>
+      </div>
+      <div class="stat stat-badge">
+        <span class="badge badge-poor" id="stat-poor">0</span>
+        <span class="stat-label">Poor</span>
+      </div>
+    </div>
+
+    <section id="form" class="card page active">
+      <div class="card-header">
+        <h2>Attendance Form</h2>
+      </div>
+      <div class="card-body">
+        <form id="attendance-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="emp-id">Employee ID</label>
+              <div class="input-suffix">
+                <input id="emp-id" type="text" readonly>
+                <button type="button" class="suffix-toggle" id="id-mode-toggle">Auto</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="emp-name">Employee Name</label>
+              <input id="emp-name" type="text" placeholder="Enter full name" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="department">Department</label>
+              <select id="department" required>
+                <option value="">Select department</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Finance">Finance</option>
+                <option value="HR">HR</option>
+                <option value="Sales">Sales</option>
+                <option value="Operations">Operations</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="working-days">Working Days</label>
+              <input id="working-days" type="number" min="1" placeholder="e.g. 30" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="present-days">Present Days</label>
+              <input id="present-days" type="number" min="0" placeholder="e.g. 28" required>
+            </div>
+            <div class="form-group">
+              <label for="leave-days">Leave Days</label>
+              <input id="leave-days" type="number" min="0" placeholder="e.g. 2" required>
+            </div>
+          </div>
+          <button type="submit">Submit Record</button>
+          <p id="output"></p>
+        </form>
+      </div>
+    </section>
+
+    <section id="table" class="card page">
+      <div class="card-header">
+        <h2>Attendance Report</h2>
+        <span class="record-badge" id="record-badge">0 records</span>
+      </div>
+      <div class="card-body">
+        <div class="table-toolbar">
+          <input type="text" class="search-input" id="search-input" placeholder="Search by ID or name…">
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th class="sortable" data-sort="id">Emp ID <span class="sort-arrow"></span></th>
+                <th class="sortable" data-sort="name">Name <span class="sort-arrow"></span></th>
+                <th class="sortable" data-sort="pct">Attendance % <span class="sort-arrow"></span></th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="report-body">
+              <tr class="empty-state">
+                <td colspan="5">
+                  <p>&#128203;</p>
+                  <p>No records yet. Submit attendance data above.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 AttendPro &mdash; Employee Attendance Management System</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
